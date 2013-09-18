@@ -23,9 +23,21 @@ class profile::redis {
 ---
 redis::servers:
   prod:
-    port:     '6381'
-    master:   'data01.sfo.example.com'
+    port:        '6381'
+    master:      'data01.sfo.example.com'
   prod_stats:
-    port:     '6382'
-    master:   'data02.sfo.example.com'
+    port:        '6382'
+    master:      'data02.sfo.example.com'
+  stage_site:
+    port:        '6482'
+    master:      'data03.sfo.example.com'
+    master_port: '6379'
+  dev_test:
+    port:         '6411'
 ```
+
+The define checks master against $::clientcert and then decided
+whether to configure it as a master or slave.
+
+Would be nice to write a provider someday that modifies running
+daemons rather than requiring a restart. 
