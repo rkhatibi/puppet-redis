@@ -1,0 +1,4 @@
+# PUPPETHEADER: This file is owned by Puppet 
+
+<% if @clientcert.eql? @master then -%>
+<% else -%>slaveof <%= @master %> <%= @master_port %><% end -%>
